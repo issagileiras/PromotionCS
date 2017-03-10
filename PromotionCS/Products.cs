@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using PromotionCS;
+
+namespace PromotionCS
+{
+    public class Products
+    {
+        static Dictionary<string,Product> products = new Dictionary<string, Product>(); 
+
+        static Products()
+        {
+            products.Add("redDress",    new Product("1001.1", "Red Dress",   100.0));
+            products.Add("greenDress",  new Product("1001.2", "Green Dress", 100.0));
+            products.Add("blueDress",   new Product("1001.3", "Blue Dress",  100.0));
+            products.Add("whiteSocks",  new Product("2001.1", "White Socks", 10.0));
+            products.Add("redSocks",    new Product("2001.2", "Red Socks",   10.0));
+        }
+
+        public static Product GetProduct(string name)
+        {
+            return products[name];
+        }
+
+        public static List<Product> ShowProducts()
+        {
+            return products.Values.ToList<Product>();
+        }
+
+        public static void AddProduct(string sku, string name, double price)
+        {
+            Product prod = new Product(sku, name, price);
+            products.Add(name, prod);
+        }
+    }
+}
